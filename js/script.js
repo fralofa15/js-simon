@@ -10,3 +10,10 @@ const inputElements = document.querySelectorAll("#input-group input");
 const secretNumbers = getUniqueRandomNumbers(5, 1, 100);
 
 console.log(secretNumbers);
+
+//Creazione di una lista di elementi con all'interno i numeri generati in precedenza
+for (let i = 0; i < secretNumbers.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = secretNumbers[i];
+    numbersListElement.appendChild(li);
+}
