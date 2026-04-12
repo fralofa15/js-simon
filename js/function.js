@@ -58,3 +58,25 @@ function handleFormSubmit(event) {
 
     console.log(userNumbers);
 }
+
+//funzione per confrontare i numeri segreti con quelli inseriti dall'utente
+function getGuessedNumbers(secretNumbers, userNumbers) {
+
+    //nuovo array per salvare i numeri indovinati
+    const guessedNumbers = [];
+
+    //controllo i numeri inseriti dall'utente
+    for (let i = 0; i < userNumbers.length; i++) {
+
+        const currentNumber = userNumbers[i];
+
+        //controllo se il numero è presente nei numeri segreti
+        if (secretNumbers.includes(currentNumber)) {
+            guessedNumbers.push(currentNumber);
+        }
+
+    }
+
+    //ritorno l'array dei numeri indovinati
+    return guessedNumbers;
+}
