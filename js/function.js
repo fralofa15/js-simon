@@ -20,3 +20,26 @@ function getUniqueRandomNumbers(total, min, max) {
 
     return numbers;
 }
+
+//funzione per aggiornare il countdown
+function updateCountdown() {
+
+    timeLeft--;
+    countdownElement.textContent = timeLeft;
+
+    if (timeLeft === 0) {
+        clearInterval(countdown);
+
+        //nascondo i numeri
+        numbersListElement.classList.add("d-none");
+
+        //metto le istruzioni per inserire i numeri ricordati
+        instructionsElement.textContent = "Inserisci i numeri che ricordi";
+
+        //mostro dove inserire i numeri
+        answersFormElement.classList.remove("d-none");
+
+        //svuoto countdown
+        countdownElement.textContent = "";
+    }
+}

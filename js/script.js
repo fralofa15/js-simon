@@ -17,3 +17,9 @@ for (let i = 0; i < secretNumbers.length; i++) {
     li.textContent = secretNumbers[i];
     numbersListElement.appendChild(li);
 }
+
+//richiamo la funzione per aggiornare il countdown ogni secondo
+let timeLeft = 30;
+countdownElement.textContent = timeLeft;
+
+const countdown = setInterval(updateCountdown, 1000);
