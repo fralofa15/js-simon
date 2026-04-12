@@ -43,3 +43,18 @@ function updateCountdown() {
         countdownElement.textContent = "";
     }
 }
+
+//funzione per inviare i numeri inseriti dall'utente
+function handleFormSubmit(event) {
+
+    event.preventDefault();
+
+    const userNumbers = [];
+
+    //recupero i valori degli input
+    for (let i = 0; i < inputElements.length; i++) {
+        userNumbers.push(Number(inputElements[i].value));
+    }
+
+    console.log(userNumbers);
+}

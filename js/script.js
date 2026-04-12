@@ -23,3 +23,6 @@ let timeLeft = 30;
 countdownElement.textContent = timeLeft;
 
 const countdown = setInterval(updateCountdown, 1000);
+
+//aggiunto event listener per il submit dei numeri inseriti dall'utente
+answersFormElement.addEventListener("submit", handleFormSubmit);
