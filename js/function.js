@@ -44,11 +44,31 @@ function updateCountdown() {
     }
 }
 
-//funzione per inviare i numeri inseriti dall'utente
+//funzione per confrontare i numeri segreti con quelli inseriti dall'utente
+function getGuessedNumbers(secretNumbers, userNumbers) {
+
+    //Nuovo array per salvare i numeri indovinati
+    const guessedNumbers = [];
+
+    //Controllo i numeri inseriti dall'utente
+    for (let i = 0; i < userNumbers.length; i++) {
+
+        const currentNumber = userNumbers[i];
+
+        //Controllo se il numero è presente nei numeri segreti
+        if (secretNumbers.includes(currentNumber)) {
+            guessedNumbers.push(currentNumber);
+        }
+
+    }
+
+    //Ritorno l'array dei numeri indovinati
+    return guessedNumbers;
+}
+
+//funzione che gestisce il submit del form
 function handleFormSubmit(event) {
-
     event.preventDefault();
-
     const userNumbers = [];
 
     //recupero i valori degli input
@@ -56,27 +76,21 @@ function handleFormSubmit(event) {
         userNumbers.push(Number(inputElements[i].value));
     }
 
-    console.log(userNumbers);
-}
+    //confronto con i numeri segreti
+    const guessedNumbers = getGuessedNumbers(secretNumbers, userNumbers);
 
-//funzione per confrontare i numeri segreti con quelli inseriti dall'utente
-function getGuessedNumbers(secretNumbers, userNumbers) {
+    let resultMessage = guessedNumbers.join(", ");
 
-    //nuovo array per salvare i numeri indovinati
-    const guessedNumbers = [];
-
-    //controllo i numeri inseriti dall'utente
-    for (let i = 0; i < userNumbers.length; i++) {
-
-        const currentNumber = userNumbers[i];
-
-        //controllo se il numero è presente nei numeri segreti
-        if (secretNumbers.includes(currentNumber)) {
-            guessedNumbers.push(currentNumber);
-        }
-
+    //se non indovina nessun numero
+    if (guessedNumbers.length === 0) {
+        resultMessage = "nessuno";
     }
 
-    //ritorno l'array dei numeri indovinati
-    return guessedNumbers;
+    //mostro il risultato
+    instructionsElement.innerHTML = `
+        Hai indovinato ${guessedNumbers.length} numeri: ${resultMessage}
+    `;
+
+    //nascondo il form
+    answersFormElement.classList.add("d-none");
 }
